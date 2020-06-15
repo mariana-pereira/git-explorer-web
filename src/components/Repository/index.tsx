@@ -1,46 +1,30 @@
-/* eslint-disable implicit-arrow-linebreak */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Repository } from '../../store/ducks/repositories/types';
 import { ApplicationState } from '../../store';
 
 import * as RepositoriesActions from '../../store/ducks/repositories/actions';
 
-interface StateProps {
-  repositories: Repository[];
+const RepositoryList: React.FC = () => {
+const repositories = useSelector((state: ApplicationState) => state.repositories.data);
+const dispatch = useDispatch();
+
+useEffect(() => {
+  async function loadRepositories() {
+    dispatch(RepositoriesActions.loadRequest());
 }
 
-interface DispatchProps {
-  loadRequest(): void;
-}
+  loadRepositories();
+}, [dispatch]);
 
-type Props = StateProps & DispatchProps
+  return (
+    <ul>
+      {repositories.map((repository: Repository) => (
+        <li key={repository.id}>{repository.name}</li>
+      ))}
+    </ul>
+  );
+};
 
-class RepositoryList extends Component<Props> {
-  componentDidMount() {
-    const { loadRequest } = this.props;
-
-    loadRequest();
-  }
-
-  render() {
-    const { repositories } = this.props;
-
-    return (
-      <ul>
-        {repositories.map((repository) => <li>{repository.name}</li>)}
-      </ul>
-    );
-  }
-}
-
-const mapStateToProps = (state: ApplicationState) => ({
-  repositories: state.repositories.data,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(RepositoriesActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(RepositoryList);
+export default RepositoryList;
