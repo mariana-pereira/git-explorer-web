@@ -7,16 +7,16 @@ import { ApplicationState } from '../../store';
 import * as RepositoriesActions from '../../store/ducks/repositories/actions';
 
 const RepositoryList: React.FC = () => {
-const repositories = useSelector((state: ApplicationState) => state.repositories.data);
-const dispatch = useDispatch();
+  const repositories = useSelector((state: ApplicationState) => state.repositories.data);
+  const dispatch = useDispatch();
 
-useEffect(() => {
-  async function loadRepositories() {
-    dispatch(RepositoriesActions.loadRequest());
-}
+  useEffect(() => {
+    async function loadRepositories() {
+      dispatch(RepositoriesActions.loadRequest());
+    }
 
-  loadRepositories();
-}, [dispatch]);
+    loadRepositories();
+  }, [dispatch]);
 
   return (
     <ul>
