@@ -6,6 +6,8 @@ import { ApplicationState } from '../../store';
 
 import * as RepositoriesActions from '../../store/ducks/repositories/actions';
 
+import { Container } from './styles';
+
 const RepositoryList: React.FC = () => {
   const repositories = useSelector((state: ApplicationState) => state.repositories.data);
   const dispatch = useDispatch();
@@ -19,11 +21,15 @@ const RepositoryList: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <ul>
-      {repositories.map((repository: Repository) => (
-        <li key={repository.id}>{repository.name}</li>
-      ))}
-    </ul>
+    <Container>
+      <ul>
+        {repositories.map((repository: Repository) => (
+          <li key={repository.id}>
+            <span>{repository.name}</span>
+          </li>
+        ))}
+      </ul>
+    </Container>
   );
 };
 
