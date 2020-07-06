@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Switch from 'react-switch';
 import { ThemeContext } from 'styled-components';
 import { shade } from 'polished';
-import { FaGithub } from 'react-icons/fa';
+import { MdExplore } from 'react-icons/md';
 
 import { Container } from './styles';
 
@@ -15,7 +15,11 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
 
   return (
     <Container>
-      <FaGithub color="#fff" size={50} />
+      <div />
+      <div className="icon-container">
+        <MdExplore color="#fff" size={35} />
+        <span>GithubExplorer</span>
+      </div>
       <Switch
         onChange={toggleTheme}
         checked={title === 'dark'}
