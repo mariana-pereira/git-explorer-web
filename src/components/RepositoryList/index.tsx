@@ -6,7 +6,9 @@ import { ApplicationState } from '../../store';
 
 import * as RepositoriesActions from '../../store/ducks/repositories/actions';
 
-import { Container } from './styles';
+import {
+  Container, User, UserImage, UserInfo, RepositoryItem,
+} from './styles';
 
 const RepositoryList: React.FC = () => {
   const repositories = useSelector((state: ApplicationState) => state.repositories.data);
@@ -22,11 +24,36 @@ const RepositoryList: React.FC = () => {
 
   return (
     <Container>
+      <User>
+        <UserImage>
+          <img src="https://avatars1.githubusercontent.com/u/26336279?v=4" alt="mariana" />
+        </UserImage>
+        <UserInfo>
+          <div>
+            <strong>Mariana Pereira</strong>
+            <span>mariana-pereira</span>
+          </div>
+          <div className="info">
+            <div>
+              <strong>Repositories</strong>
+              <span>54</span>
+            </div>
+            <div>
+              <strong>Followers</strong>
+              <span>52</span>
+            </div>
+            <div>
+              <strong>Following</strong>
+              <span>20</span>
+            </div>
+          </div>
+        </UserInfo>
+      </User>
       <ul>
         {repositories.map((repository: Repository) => (
-          <li key={repository.id}>
+          <RepositoryItem key={repository.id}>
             <span>{repository.name}</span>
-          </li>
+          </RepositoryItem>
         ))}
       </ul>
     </Container>
