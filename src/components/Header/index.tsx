@@ -18,7 +18,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
       <div />
       <div className="icon-container">
         <MdExplore color="#fff" size={35} />
-        <span>GithubExplorer</span>
+        <span>GitExplorer</span>
       </div>
       <Switch
         onChange={toggleTheme}

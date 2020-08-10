@@ -6,10 +6,13 @@ declare module 'styled-components' {
 
     colors: {
       primary: string;
+      primaryDark: string;
       secondary: string;
       card: string;
       background: string;
+      textTitle: string;
       text: string;
+      buttonText: string;
     },
   }
 }
