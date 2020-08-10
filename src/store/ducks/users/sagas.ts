@@ -3,12 +3,12 @@ import {
 } from 'redux-saga/effects';
 import api from '../../../services/api';
 
-import { RepositoriesTypes } from './types';
+import { UserTypes } from './types';
 import { loadSuccess, loadFailure } from './actions';
 
 export function* load() {
   try {
-    const response = yield call(api.get, 'users/mariana-pereira/repos');
+    const response = yield call(api.get, 'users/mariana-pereira');
 
     yield put(loadSuccess(response.data));
   } catch (error) {
@@ -17,5 +17,5 @@ export function* load() {
 }
 
 export default all([
-  takeLatest(RepositoriesTypes.LOAD_REQUEST, load),
+  takeLatest(UserTypes.LOAD_REQUEST, load),
 ]);

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
-import { Repository } from '../../store/ducks/repositories/types';
 import { ApplicationState } from '../../store';
 
 import * as RepositoriesActions from '../../store/ducks/repositories/actions';
@@ -13,6 +12,7 @@ import {
 
 const RepositoryList: React.FC = () => {
   const repositories = useSelector((state: ApplicationState) => state.repositories.data);
+  const user = useSelector((state: ApplicationState) => state.user.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const RepositoryList: React.FC = () => {
           <span>20</span>
         </div>
         <div>
-          <strong>stars</strong>
+          <strong>repos</strong>
           <span>52</span>
         </div>
       </div>
