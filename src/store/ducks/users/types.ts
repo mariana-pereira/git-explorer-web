@@ -19,8 +19,9 @@ export interface User {
   avatar_url: string;
   html_url: string;
   bio: string;
-  followers: string;
-  following: string;
+  followers: number;
+  following: number;
+  public_repos: number;
 }
 
 /**

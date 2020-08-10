@@ -5,6 +5,7 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import { ApplicationState } from '../../store';
 
 import * as RepositoriesActions from '../../store/ducks/repositories/actions';
+import * as UserActions from '../../store/ducks/users/actions';
 
 import {
   Container, User, UserImage, UserInfo, RepositoryItem,
@@ -18,6 +19,7 @@ const RepositoryList: React.FC = () => {
   useEffect(() => {
     async function loadRepositories() {
       dispatch(RepositoriesActions.loadRequest());
+      dispatch(UserActions.loadRequest());
     }
 
     loadRepositories();
@@ -27,14 +29,14 @@ const RepositoryList: React.FC = () => {
     <Container>
       <User>
         <UserImage>
-          <img src="https://avatars1.githubusercontent.com/u/26336279?v=4" alt="mariana" />
+          <img src={user.avatar_url} alt={user.name} />
         </UserImage>
         <UserInfo>
-          <strong>Mariana Pereira</strong>
-          <span>mariana-pereira</span>
-          <p>FullStack Developer | Node.js | ReactJS | React Native</p>
+          <strong>{user.name}</strong>
+          <span>{user.login}</span>
+          <p>{user.bio}</p>
           <button type="button">
-            <a href="https://github.com/mariana-pereira" target="_blank" rel="noopener noreferrer">
+            <a href={user.html_url} target="_blank" rel="noopener noreferrer">
               See in Github
             </a>
           </button>
@@ -43,15 +45,15 @@ const RepositoryList: React.FC = () => {
       <div className="info">
         <div>
           <strong>followers</strong>
-          <span>52</span>
+          <span>{user.followers}</span>
         </div>
         <div>
           <strong>following</strong>
-          <span>20</span>
+          <span>{user.following}</span>
         </div>
         <div>
           <strong>repos</strong>
-          <span>52</span>
+          <span>{user.public_repos}</span>
         </div>
       </div>
       <ul>
