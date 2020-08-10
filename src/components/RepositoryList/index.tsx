@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { MdKeyboardArrowRight } from 'react-icons/md';
 
 import { Repository } from '../../store/ducks/repositories/types';
 import { ApplicationState } from '../../store';
@@ -54,11 +55,16 @@ const RepositoryList: React.FC = () => {
         </div>
       </div>
       <ul>
-        {repositories.map((repository: Repository) => (
-          <RepositoryItem key={repository.id}>
-            <span>{repository.name}</span>
-          </RepositoryItem>
-        ))}
+        <RepositoryItem>
+          <div className="repo-info">
+            <strong>chat-me-node</strong>
+            <span>Typescript</span>
+            <p>Chat App API made with Node.js, Typescript, Express and MongoDB</p>
+          </div>
+          <div className="repo-icon">
+            <MdKeyboardArrowRight size={20} />
+          </div>
+        </RepositoryItem>
       </ul>
     </Container>
   );
