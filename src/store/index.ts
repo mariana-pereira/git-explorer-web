@@ -1,5 +1,5 @@
 import {
-  createStore, applyMiddleware, Store,
+  createStore, applyMiddleware, Store, compose,
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { RepositoriesState } from './ducks/repositories/types';
@@ -15,7 +15,18 @@ export interface ApplicationState {
 
 const sagamiddleware = createSagaMiddleware();
 
-const store: Store<ApplicationState> = createStore(rootReducer, applyMiddleware(sagamiddleware));
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+
+const composeEhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store: Store<ApplicationState> = createStore(
+  rootReducer,
+  composeEhancers(applyMiddleware(sagamiddleware)),
+);
 
 sagamiddleware.run(rootSaga);
 
