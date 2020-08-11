@@ -8,4 +8,5 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  padding: 0 20px;
 `;
