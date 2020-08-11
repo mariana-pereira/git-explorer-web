@@ -15,6 +15,8 @@ export enum RepositoriesTypes {
 export interface Repository {
   id: number;
   name: string;
+  language: string;
+  description: string;
 }
 
 /**

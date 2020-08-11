@@ -57,16 +57,18 @@ const RepositoryList: React.FC = () => {
         </div>
       </div>
       <ul>
-        <RepositoryItem>
-          <div className="repo-info">
-            <strong>chat-me-node</strong>
-            <span>Typescript</span>
-            <p>Chat App API made with Node.js, Typescript, Express and MongoDB</p>
-          </div>
-          <div className="repo-icon">
-            <MdKeyboardArrowRight size={20} />
-          </div>
-        </RepositoryItem>
+        {repositories.map((repository) => (
+          <RepositoryItem key={repository.id}>
+            <div className="repo-info">
+              <strong>{repository.name}</strong>
+              <span>{repository.language}</span>
+              <p>{repository.description}</p>
+            </div>
+            <div className="repo-icon">
+              <MdKeyboardArrowRight size={20} />
+            </div>
+          </RepositoryItem>
+        ))}
       </ul>
     </Container>
   );
