@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  width: 100%;
   height: 70px;
   background: ${(props) => props.theme.colors.primary};
-  padding: 0 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-evenly;
+
+  #blank {
+    display: none;
+  }
 
   .icon-container {
     display: flex;
@@ -17,6 +21,10 @@ export const Container = styled.div`
   .icon-container span {
     font-size: 20px;
     color: #fff;
-    margin-left: 5px;
+  }
+
+  @media (min-width: 400px) {
+    justify-content: space-between;
+    padding: 0 20px;
   }
 `;
