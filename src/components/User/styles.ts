@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
+  max-width: 280px;
   background-color: ${(props) => props.theme.colors.card};
   margin-top: 10px;
   padding: 20px;
@@ -17,7 +18,11 @@ export const Container = styled.div`
     border-radius: 50%;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 400px) {
+    max-width: 350px;
+  }
+
+  @media (min-width: 700px) {
     max-width: 600px;
     padding: 30px;
     display: grid;

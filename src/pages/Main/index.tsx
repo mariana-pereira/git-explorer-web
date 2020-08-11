@@ -9,7 +9,8 @@ const Main: React.FC = () => (
   <Container>
     <Content>
       <User />
-      {/* <RepositoryList /> */}
+      <div id="space" />
+      <RepositoryList />
     </Content>
   </Container>
 );
