@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100px;
-  margin-top: 50px;
+  background-color: ${(props) => props.theme.colors.card};
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 
   img {
@@ -13,10 +16,24 @@ export const Container = styled.div`
     height: 100px;
     border-radius: 50%;
   }
+
+  @media (min-width: 500px) {
+    max-width: 600px;
+    padding: 30px;
+    display: grid;
+    grid-template-areas: 
+      "image info info"
+      "stats stats stats";
+
+    img {
+      grid-area: image;
+      margin-right: 50px;
+    }
+  }
 `;
 
 export const UserInfo = styled.div`
-  margin-top: 110px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +51,7 @@ export const UserInfo = styled.div`
   }
 
   p {
-    margin-top: 6px;
+    margin-top: 10px;
     color: ${(props) => props.theme.colors.text};
     max-width: 100%;
   }
@@ -45,7 +62,7 @@ export const UserInfo = styled.div`
     border: 0;
     border-radius: 6px;
     align-self: center;
-    margin-top: 10px;
+    margin-top: 50px;
     background-color: ${(props) => props.theme.colors.primary};
     transition: background-color 0.2s;
     opacity: 1;
@@ -61,11 +78,15 @@ export const UserInfo = styled.div`
       font-weight: bold;
     }
   }
+
+  @media (min-width: 500px) {
+    grid-area: info;
+  }
 `;
 
 export const UserStats = styled.div`
   width: 100%;
-  margin-top: 60px;
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
 
@@ -84,5 +105,9 @@ export const UserStats = styled.div`
       font-size: 16px;
       color: ${(props) => props.theme.colors.text};
     }
+  }
+
+  @media (min-width: 500px) {
+    grid-area: stats;
   }
 `;
