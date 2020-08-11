@@ -12,6 +12,11 @@ export enum RepositoriesTypes {
  * Data types
  */
 
+export interface LoadRequestAction {
+  type: typeof RepositoriesTypes.LOAD_REQUEST;
+  payload: string;
+}
+
 export interface Repository {
   id: number;
   name: string;

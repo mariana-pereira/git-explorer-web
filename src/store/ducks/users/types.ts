@@ -12,6 +12,11 @@ export enum UserTypes {
  * Data types
  */
 
+export interface LoadRequestAction {
+  type: typeof UserTypes.LOAD_REQUEST
+  payload: string;
+}
+
 export interface User {
   id: number;
   login: string;

@@ -3,12 +3,12 @@ import {
 } from 'redux-saga/effects';
 import api from '../../../services/api';
 
-import { RepositoriesTypes } from './types';
+import { RepositoriesTypes, LoadRequestAction } from './types';
 import { loadSuccess, loadFailure } from './actions';
 
-export function* load() {
+export function* load(action: LoadRequestAction) {
   try {
-    const response = yield call(api.get, 'users/mariana-pereira/repos');
+    const response = yield call(api.get, `users/${action.payload}/repos`);
 
     yield put(loadSuccess(response.data));
   } catch (error) {

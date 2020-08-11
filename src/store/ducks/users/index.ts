@@ -20,7 +20,7 @@ const INITIAL_STATE: UserState = {
 const reducer: Reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case UserTypes.LOAD_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, data: action.payload.data };
     case UserTypes.LOAD_SUCCESS:
       return {
         ...state, loading: false, error: false, data: action.payload.data,

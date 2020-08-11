@@ -16,6 +16,7 @@ export const Container = styled.div`
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    background-color: ${(props) => props.theme.colors.text};
   }
 
   @media (min-width: 400px) {
