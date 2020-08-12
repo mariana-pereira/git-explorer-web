@@ -12,7 +12,7 @@ const User: React.FC = () => {
 
   useEffect(() => {
     async function loadRepositories() {
-      dispatch(RepositoriesActions.loadRequest(user.login));
+      dispatch(RepositoriesActions.loadRequest(user?.login));
     }
 
     loadRepositories();
