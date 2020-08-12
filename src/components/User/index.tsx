@@ -27,6 +27,7 @@ const User: React.FC = () => {
             <strong>{user.name}</strong>
             <span>{user.login}</span>
             <p>{user.bio}</p>
+
             <button type="button">
               <a href={user.html_url} target="_blank" rel="noopener noreferrer">
                 See in Github

@@ -19,6 +19,7 @@ interface Repository {
   stargazers_count: number;
   forks_count: number;
   open_issues_count: number;
+  watchers_count: number;
   pushed_at: Date;
 }
 
@@ -49,6 +50,29 @@ const Repository: React.FC = () => {
                 ago
               </span>
             </div>
+            <button type="button">
+              <a href={repository.html_url} target="_blank" rel="noopener noreferrer">
+                See in Github
+              </a>
+            </button>
+            <ul>
+              <li>
+                <strong>stars</strong>
+                <span>{repository.stargazers_count}</span>
+              </li>
+              <li>
+                <strong>forks</strong>
+                <span>{repository.forks_count}</span>
+              </li>
+              <li>
+                <strong>issues</strong>
+                <span>{repository.open_issues_count}</span>
+              </li>
+              <li>
+                <strong>watchers</strong>
+                <span>{repository.watchers_count}</span>
+              </li>
+            </ul>
           </RepositoryInfo>
         </Content>
       )}

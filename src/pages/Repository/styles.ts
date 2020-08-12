@@ -54,4 +54,44 @@ export const RepositoryInfo = styled.div`
       color: ${(props) => props.theme.colors.text};
     }
   }
+
+  button {
+    width: 250px;
+    height: 28px;
+    border: 0;
+    border-radius: 6px;
+    align-self: center;
+    margin-top: 50px;
+    background-color: ${(props) => props.theme.colors.primary};
+    transition: background-color 0.2s;
+    opacity: 1;
+
+    &:hover {
+      background: ${(props) => props.theme.colors.primaryDark};
+      
+    }
+
+    a {
+      color: ${(props) => props.theme.colors.buttonText};
+    }
+  }
+
+  ul {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    span {
+      color: ${(props) => props.theme.colors.text};
+    }
+  }
 `;
