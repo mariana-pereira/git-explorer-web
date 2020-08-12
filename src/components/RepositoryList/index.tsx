@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
@@ -13,14 +14,16 @@ const RepositoryList: React.FC = () => {
     <Container>
       {repositories.map((repository) => (
         <RepositoryItem key={repository.id}>
-          <div className="repo-info">
-            <strong>{repository.name}</strong>
-            <span>{repository.language}</span>
-            <p>{repository.description}</p>
-          </div>
-          <div className="repo-icon">
-            <MdKeyboardArrowRight size={20} />
-          </div>
+          <Link to={`/repository/${repository.full_name}`}>
+            <div className="repo-info">
+              <strong>{repository.name}</strong>
+              <span>{repository.language}</span>
+              <p>{repository.description}</p>
+            </div>
+            <div className="repo-icon">
+              <MdKeyboardArrowRight size={20} />
+            </div>
+          </Link>
         </RepositoryItem>
       ))}
     </Container>
