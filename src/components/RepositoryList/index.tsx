@@ -8,7 +8,9 @@ import { ApplicationState } from '../../store';
 import { Container, RepositoryItem } from './styles';
 
 const RepositoryList: React.FC = () => {
-  const repositories = useSelector((state: ApplicationState) => state.repositories.data);
+  const repositories = useSelector(
+    (state: ApplicationState) => state.repositories.data,
+  );
 
   return (
     <Container>
