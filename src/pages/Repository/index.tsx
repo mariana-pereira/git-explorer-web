@@ -5,7 +5,7 @@ import api from '../../services/api';
 import RepositoryItem from '../../components/Repository';
 import IssueList from '../../components/IssueList';
 
-import { Container, Content } from './styles';
+import { Container } from './styles';
 
 interface RepositoryParams {
   repository: string;
@@ -52,10 +52,11 @@ const Repository: React.FC = () => {
   return (
     <Container>
       {repository && (
-        <Content>
+        <>
           <RepositoryItem repository={repository} />
+          <div id="space" />
           <IssueList issues={issues} />
-        </Content>
+        </>
       )}
     </Container>
   );

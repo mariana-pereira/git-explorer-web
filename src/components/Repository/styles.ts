@@ -1,7 +1,21 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  
+  width: 100%;
+  height: 100%;
+  max-width: 280px;
+  background: ${(props) => props.theme.colors.card};
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px 0;
+
+  @media (min-width: 400px) {
+    max-width: 350px;
+  }
+
+  @media (min-width: 700px) {
+    max-width: 600px;
+  }
 `;
 
 export const RepositoryInfo = styled.div`
