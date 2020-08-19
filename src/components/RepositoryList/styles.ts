@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.ul`
   height: 100%;
   width: 100%;
   max-width: 280px;
   background: ${(props) => props.theme.colors.card};
   border-radius: 10px;
   padding: 10px 20px;
+  margin: 10px 0;
 
   @media (min-width: 400px) {
     max-width: 350px;
