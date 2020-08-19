@@ -13,22 +13,24 @@ interface Issue {
 }
 
 interface Props {
-  issue: Issue;
+  issues: Issue[];
 }
 
-const IssueList: React.FC<Props> = ({ issue }) => (
+const IssueList: React.FC<Props> = ({ issues }) => (
   <Container>
-    <IssueItem>
-      <a href={issue.html_url} target="_blank">
-        <div className="repo-info">
-          <strong>{issue.title}</strong>
-          <p>{issue.user.login}</p>
-        </div>
-        <div className="repo-icon">
-          <MdKeyboardArrowRight size={20} />
-        </div>
-      </a>
-    </IssueItem>
+    {issues.map((issue) => (
+      <IssueItem>
+        <a href={issue.html_url} target="_blank">
+          <div className="repo-info">
+            <strong>{issue.title}</strong>
+            <p>{issue.user.login}</p>
+          </div>
+          <div className="repo-icon">
+            <MdKeyboardArrowRight size={20} />
+          </div>
+        </a>
+      </IssueItem>
+    ))}
   </Container>
 );
 

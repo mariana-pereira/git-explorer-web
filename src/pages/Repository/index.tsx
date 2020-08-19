@@ -3,7 +3,7 @@ import { useRouteMatch } from 'react-router-dom';
 import api from '../../services/api';
 
 import RepositoryItem from '../../components/Repository';
-import IssueItem from '../../components/IssueList';
+import IssueList from '../../components/IssueList';
 
 import { Container, Content } from './styles';
 
@@ -54,13 +54,7 @@ const Repository: React.FC = () => {
       {repository && (
         <Content>
           <RepositoryItem repository={repository} />
-          {issues && (
-            <ul>
-              {issues.map((issue) => (
-                <IssueItem issue={issue} />
-              ))}
-            </ul>
-          )}
+          <IssueList issues={issues} />
         </Content>
       )}
     </Container>
