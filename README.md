@@ -12,7 +12,7 @@
 Go to [https://git-explorer-app.netlify.app/](https://git-explorer-app.netlify.app/) to start exploring Github users.
 
 <p align="center">
-   <img src=".github/home-light.png" width="500"/>
+   <img src=".github/home-light.png" width="700"/>
 </p>
 
 ---

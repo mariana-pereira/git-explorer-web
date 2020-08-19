@@ -18,7 +18,8 @@ export const Container = styled.ul`
   }
 `;
 
-export const RepositoryItem = styled.li`
+export const IssueItem = styled.li`
+  margin-top: 15px;
   padding: 10px 0;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 
@@ -58,4 +59,5 @@ export const RepositoryItem = styled.li`
       }
     }
   }
+  
 `;

@@ -45,6 +45,6 @@ export const Content = styled.div`
   justify-content: center;
 
   #space {
-    height: 10px;
+    height: 20px;
   }
 `;
