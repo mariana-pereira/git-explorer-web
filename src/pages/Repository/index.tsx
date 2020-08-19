@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import { MdKeyboardArrowRight } from 'react-icons/md';
 import api from '../../services/api';
 
 import RepositoryItem from '../../components/Repository';
+import IssueItem from '../../components/IssueList';
 
-import {
-  Container, Content, Issue,
-} from './styles';
+import { Container, Content } from './styles';
 
 interface RepositoryParams {
   repository: string;
@@ -59,19 +57,7 @@ const Repository: React.FC = () => {
           {issues && (
             <ul>
               {issues.map((issue) => (
-                <Issue key={issue.id}>
-                  <a href={issue.html_url} target="_blank">
-
-                    <div className="repo-info">
-                      <strong>{issue.title}</strong>
-                      <p>{issue.user.login}</p>
-                    </div>
-                    <div className="repo-icon">
-                      <MdKeyboardArrowRight size={20} />
-                    </div>
-
-                  </a>
-                </Issue>
+                <IssueItem issue={issue} />
               ))}
             </ul>
           )}
