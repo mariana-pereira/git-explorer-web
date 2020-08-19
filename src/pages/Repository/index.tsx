@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import formatDistance from 'date-fns/formatDistance';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import api from '../../services/api';
 
+import RepositoryItem from '../../components/Repository';
+
 import {
-  Container, Content, RepositoryInfo, Issue,
+  Container, Content, Issue,
 } from './styles';
 
 interface RepositoryParams {
@@ -54,44 +55,7 @@ const Repository: React.FC = () => {
     <Container>
       {repository && (
         <Content>
-          <RepositoryInfo>
-            <strong>{repository.name}</strong>
-            <p>{repository.description}</p>
-            <div>
-              <span>{repository.language}</span>
-              <span>
-                Updated
-                <span> </span>
-                {formatDistance(new Date(repository.pushed_at), Date.now())}
-                <span> </span>
-                ago
-              </span>
-            </div>
-            <button type="button">
-              <a href={repository.html_url} target="_blank" rel="noopener noreferrer">
-                See in Github
-              </a>
-            </button>
-            <ul>
-              <li>
-                <strong>stars</strong>
-                <span>{repository.stargazers_count}</span>
-              </li>
-              <li>
-                <strong>forks</strong>
-                <span>{repository.forks_count}</span>
-              </li>
-              <li>
-                <strong>issues</strong>
-                <span>{repository.open_issues_count}</span>
-              </li>
-              <li>
-                <strong>watchers</strong>
-                <span>{repository.watchers_count}</span>
-              </li>
-            </ul>
-          </RepositoryInfo>
-
+          <RepositoryItem repository={repository} />
           {issues && (
             <ul>
               {issues.map((issue) => (
