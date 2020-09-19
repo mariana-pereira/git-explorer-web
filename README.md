@@ -9,7 +9,7 @@
 > Explore the repositories of a Github user
 
 # Try it now
-Go to [https://git-explorer-app.netlify.app/](https://git-explorer-app.netlify.app/) to start exploring Github users.
+Go to [https://mp-git-explorer.netlify.app/](https://git-explorer-app.netlify.app/) to start exploring Github users.
 
 <p align="center">
    <img src=".github/home-light.png" width="700"/>
