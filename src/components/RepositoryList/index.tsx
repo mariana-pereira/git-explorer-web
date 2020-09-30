@@ -13,7 +13,7 @@ const RepositoryList: React.FC = () => {
   );
 
   return (
-    <Container>
+    <Container data-testid="repo-list">
       {repositories.map((repository) => (
         <RepositoryItem key={repository.id}>
           <Link to={`/repository/${repository.full_name}`}>

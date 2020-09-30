@@ -9,12 +9,24 @@ describe('The Home Page', () => {
     });
   });
 
-  context('When page is initially opened', () => {
+  context('When search for an user', () => {
     it('should load an user', () => {
       cy.get('[data-testid="search-input"]').type('vuejs');
       cy.get('[data-testid="search-button"]').click();
 
       cy.get('[data-testid="user-card"]').should('exist');
+    });
+
+    context('When click on a repository', () => {
+      it('should load repository data', () => {
+        cy.get('[data-testid="search-input"]').type('vuejs');
+        cy.get('[data-testid="search-button"]').click();
+
+        cy.get('[data-testid="user-card"]').should('exist');
+        cy.get('[data-testid="repo-list"] > li').first().click();
+
+        cy.url().should('contain', '/repository/');
+      });
     });
   });
 });
