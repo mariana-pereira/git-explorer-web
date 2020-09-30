@@ -19,12 +19,12 @@ describe('The Home Page', () => {
   });
 
   context('When click user github button', () => {
-    it('should load an user', () => {
+    it('should open users github profile', () => {
       cy.get('[data-testid="search-input"]').type('vuejs');
       cy.get('[data-testid="search-button"]').click();
 
       cy.get('[data-testid="user-card"]').should('exist');
-      cy.get('[data-testid="github"]').click();
+      cy.get('[data-testid="user-github"]').click();
     });
   });
 
@@ -37,6 +37,19 @@ describe('The Home Page', () => {
       cy.get('[data-testid="repo-list"] > li').first().click();
 
       cy.url().should('contain', '/repository/');
+    });
+  });
+
+  context('When click repository github button', () => {
+    it('should open repository on github page', () => {
+      cy.get('[data-testid="search-input"]').type('vuejs');
+      cy.get('[data-testid="search-button"]').click();
+
+      cy.get('[data-testid="user-card"]').should('exist');
+      cy.get('[data-testid="repo-list"] > li').first().click();
+
+      cy.url().should('contain', '/repository/');
+      cy.get('[data-testid="repo-github"]').click();
     });
   });
 });
