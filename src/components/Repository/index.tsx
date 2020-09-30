@@ -36,7 +36,7 @@ const Repository: React.FC<Props> = ({ repository }) => (
           ago
         </span>
       </div>
-      <button type="button">
+      <button type="button" data-testid="repo-github">
         <a href={repository.html_url} target="_blank" rel="noopener noreferrer">
           See in Github
         </a>
