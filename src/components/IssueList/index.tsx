@@ -17,7 +17,7 @@ interface Props {
 }
 
 const IssueList: React.FC<Props> = ({ issues }) => (
-  <Container>
+  <Container data-testid="issue-list">
     {issues.map((issue) => (
       <IssueItem key={issue.id}>
         <a href={issue.html_url} target="_blank" rel="noopener noreferrer">

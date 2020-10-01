@@ -31,13 +31,13 @@ const Main: React.FC = () => {
   return (
     <Container>
       <div id="input-content">
-        <input type="text" placeholder="Username" ref={username} />
-        <button type="button" onClick={fetchUser}>
+        <input type="text" placeholder="Username" data-testid="search-input" ref={username} />
+        <button type="button" data-testid="search-button" onClick={fetchUser}>
           <MdSearch size={20} color="#fff" />
         </button>
       </div>
       {visible && (
-        <Content>
+        <Content data-testid="user-card">
           <User />
           <div id="space" />
           <RepositoryList />
