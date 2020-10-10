@@ -11,7 +11,7 @@ const User: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function loadRepositories() {
+    function loadRepositories() {
       dispatch(RepositoriesActions.loadRequest(user?.login));
     }
 
@@ -21,34 +21,34 @@ const User: React.FC = () => {
   return (
     <Container>
       {user && (
-        <>
-          <img src={user.avatar_url} alt={user.name} />
-          <UserInfo>
-            <strong>{user.name}</strong>
-            <span>{user.login}</span>
-            <p>{user.bio}</p>
+      <>
+        <img src={user.avatar_url} alt={user.name} />
+        <UserInfo>
+          <strong>{user.name}</strong>
+          <span>{user.login}</span>
+          <p>{user.bio}</p>
 
-            <button type="button" data-testid="user-github">
-              <a href={user.html_url} target="_blank" rel="noopener noreferrer">
-                See in Github
-              </a>
-            </button>
-          </UserInfo>
-          <UserStats>
-            <div>
-              <strong>followers</strong>
-              <span>{user.followers}</span>
-            </div>
-            <div>
-              <strong>following</strong>
-              <span>{user.following}</span>
-            </div>
-            <div>
-              <strong>repos</strong>
-              <span>{user.public_repos}</span>
-            </div>
-          </UserStats>
-        </>
+          <button type="button" data-testid="user-github">
+            <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+              See in Github
+            </a>
+          </button>
+        </UserInfo>
+        <UserStats>
+          <div>
+            <strong>followers</strong>
+            <span>{user.followers}</span>
+          </div>
+          <div>
+            <strong>following</strong>
+            <span>{user.following}</span>
+          </div>
+          <div>
+            <strong>repos</strong>
+            <span>{user.public_repos}</span>
+          </div>
+        </UserStats>
+      </>
       )}
     </Container>
   );

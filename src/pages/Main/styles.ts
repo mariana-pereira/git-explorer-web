@@ -48,3 +48,11 @@ export const Content = styled.div`
     height: 20px;
   }
 `;
+
+export const Error = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #c02d0d;
+  margin-top: 8px;
+`;

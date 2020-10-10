@@ -8,10 +8,11 @@ import { ApplicationState } from '../../store';
 import RepositoryList from '../../components/RepositoryList';
 import User from '../../components/User';
 
-import { Container, Content } from './styles';
+import { Container, Content, Error } from './styles';
 
 const Main: React.FC = () => {
   const user = useSelector((state: ApplicationState) => state.user.data);
+  const [inputError, setInputError] = useState('');
   const [visible, setVisible] = useState(() => {
     if (user.id) {
       return true;
@@ -24,18 +25,38 @@ const Main: React.FC = () => {
   const username = createRef<HTMLInputElement>();
 
   function fetchUser() {
+    if (!username.current?.value) {
+      setInputError('Type the username');
+      return;
+    }
+
     dispatch(UserActions.loadRequest(String(username.current?.value)));
-    setVisible(true);
+    if (user.id) {
+      setVisible(true);
+      setInputError('');
+    } else {
+      setInputError('Error searching user.');
+    }
   }
 
   return (
     <Container>
       <div id="input-content">
-        <input type="text" placeholder="Username" data-testid="search-input" ref={username} />
+        <input
+          type="text"
+          placeholder="Username"
+          data-testid="search-input"
+          ref={username}
+        />
         <button type="button" data-testid="search-button" onClick={fetchUser}>
           <MdSearch size={20} color="#fff" />
         </button>
       </div>
+      { inputError && (
+        <Error>
+          <span>{inputError}</span>
+        </Error>
+      )}
       {visible && (
         <Content data-testid="user-card">
           <User />
