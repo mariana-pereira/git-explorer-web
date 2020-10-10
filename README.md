@@ -12,7 +12,7 @@
 Go to [https://mp-git-explorer.netlify.app/](https://mp-git-explorer.netlify.app) to start exploring Github users.
 
 <p align="center">
-   <img src=".github/home-light.png" width="700"/>
+   <img src=".github/home-light.png" width="800"/>
 </p>
 
 ---
@@ -25,10 +25,11 @@ Go to [https://mp-git-explorer.netlify.app/](https://mp-git-explorer.netlify.app
 - [Redux](https://redux.js.org/)
 - [styled-components](https://styled-components.com/)
 - [GitHub REST API](https://docs.github.com/en/rest)
+- [Cypress](https://www.cypress.io/)
 
 # Installation
 
-**You need to install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) first, in order to clone the project via HTTPS, run this command:**
+**You need to install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) first.**
 
 ```git clone https://github.com/mariana-pereira/git-explorer-web.git```
 
@@ -36,17 +37,19 @@ SSH URLs provide access to a Git repository via SSH, a secure protocol. If you h
 
 ```git clone git@github.com:mariana-pereira/git-explorer-web.git```
 
-**Install dependencies**
+Run `yarn` to install dependencies.<br />
 
-```yarn install```
 
 # Getting Started
 
-Run the following command in order to start the application in a development environment:
-
-```yarn start```
+Run `yarn start` in order to start the application in a development environment.
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+# Running the tests
+
+Run `yarn open cypress` in order to start e2e testing.
+
 
 # Show your support
 
