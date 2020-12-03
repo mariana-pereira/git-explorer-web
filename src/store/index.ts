@@ -22,11 +22,15 @@ declare global {
   }
 }
 
-const composeEhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const composeEnhancers = process.env.NODE_ENV === 'development'
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+  : compose;
 
 const store: Store<ApplicationState> = createStore(
   rootReducer,
-  composeEhancers(applyMiddleware(sagamiddleware)),
+  composeEnhancers(applyMiddleware(sagamiddleware)),
 );
 
 sagamiddleware.run(rootSaga);
