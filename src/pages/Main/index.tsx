@@ -1,17 +1,22 @@
-import React, { createRef, useState } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdSearch } from 'react-icons/md';
 
 import * as UserActions from '../../store/ducks/users/actions';
+import * as RepositoriesActions from '../../store/ducks/repositories/actions';
 import { ApplicationState } from '../../store';
 
 import RepositoryList from '../../components/RepositoryList';
-import User from '../../components/User';
 
-import { Container, Content, Error } from './styles';
+import {
+  Container, Content, Error, User, UserInfo, UserStats,
+} from './styles';
 
 const Main: React.FC = () => {
   const user = useSelector((state: ApplicationState) => state.user.data);
+  const dispatch = useDispatch();
+  const username = createRef<HTMLInputElement>();
+
   const [inputError, setInputError] = useState('');
   const [visible, setVisible] = useState(() => {
     if (user.id) {
@@ -21,8 +26,13 @@ const Main: React.FC = () => {
     return false;
   });
 
-  const dispatch = useDispatch();
-  const username = createRef<HTMLInputElement>();
+  useEffect(() => {
+    function loadRepositories() {
+      dispatch(RepositoriesActions.loadRequest(user?.login));
+    }
+
+    loadRepositories();
+  });
 
   function fetchUser() {
     if (!username.current?.value) {
@@ -59,8 +69,38 @@ const Main: React.FC = () => {
       )}
       {visible && (
         <Content data-testid="user-card">
-          <User />
-          <div id="space" />
+          <User>
+            {user && (
+            <>
+              <img src={user.avatar_url} alt={user.name} />
+              <UserInfo>
+                <strong>{user.name}</strong>
+                <span>{user.login}</span>
+                <p>{user.bio}</p>
+
+                <button type="button" data-testid="user-github">
+                  <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+                    See in Github
+                  </a>
+                </button>
+              </UserInfo>
+              <UserStats>
+                <div>
+                  <strong>followers</strong>
+                  <span>{user.followers}</span>
+                </div>
+                <div>
+                  <strong>following</strong>
+                  <span>{user.following}</span>
+                </div>
+                <div>
+                  <strong>repos</strong>
+                  <span>{user.public_repos}</span>
+                </div>
+              </UserStats>
+            </>
+            )}
+          </User>
           <RepositoryList />
         </Content>
       )}
