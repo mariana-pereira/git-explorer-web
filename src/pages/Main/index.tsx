@@ -1,19 +1,21 @@
 import React, { createRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdSearch } from 'react-icons/md';
+import { MdSearch, MdKeyboardArrowRight } from 'react-icons/md';
 
 import * as UserActions from '../../store/ducks/users/actions';
 import * as RepositoriesActions from '../../store/ducks/repositories/actions';
 import { ApplicationState } from '../../store';
 
-import RepositoryList from '../../components/RepositoryList';
-
 import {
-  Container, Content, Error, User, UserInfo, UserStats,
+  Container, Content, Error, User, UserInfo, UserStats, RepositoryList, RepositoryItem,
 } from './styles';
 
 const Main: React.FC = () => {
   const user = useSelector((state: ApplicationState) => state.user.data);
+  const repositories = useSelector(
+    (state: ApplicationState) => state.repositories.data,
+  );
   const dispatch = useDispatch();
   const username = createRef<HTMLInputElement>();
 
@@ -32,7 +34,7 @@ const Main: React.FC = () => {
     }
 
     loadRepositories();
-  });
+  }, [dispatch, user, user.login]);
 
   function fetchUser() {
     if (!username.current?.value) {
@@ -101,7 +103,22 @@ const Main: React.FC = () => {
             </>
             )}
           </User>
-          <RepositoryList />
+          <RepositoryList data-testid="repo-list">
+            {repositories.map((repository) => (
+              <RepositoryItem key={repository.id}>
+                <Link to={`/repository/${repository.full_name}`}>
+                  <div className="repo-info">
+                    <strong>{repository.name}</strong>
+                    <span>{repository.language}</span>
+                    <p>{repository.description}</p>
+                  </div>
+                  <div className="repo-icon">
+                    <MdKeyboardArrowRight size={20} />
+                  </div>
+                </Link>
+              </RepositoryItem>
+            ))}
+          </RepositoryList>
         </Content>
       )}
     </Container>
