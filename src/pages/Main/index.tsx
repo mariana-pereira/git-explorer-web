@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdSearch, MdKeyboardArrowRight } from 'react-icons/md';
@@ -13,13 +13,14 @@ import {
 
 const Main: React.FC = () => {
   const user = useSelector((state: ApplicationState) => state.user.data);
+  const error = useSelector((state: ApplicationState) => state.user.error);
   const repositories = useSelector(
     (state: ApplicationState) => state.repositories.data,
   );
   const dispatch = useDispatch();
-  const username = createRef<HTMLInputElement>();
 
   const [inputError, setInputError] = useState('');
+  const [username, setUsername] = useState('');
   const [visible, setVisible] = useState(() => {
     if (user.id) {
       return true;
@@ -30,40 +31,44 @@ const Main: React.FC = () => {
 
   useEffect(() => {
     function loadRepositories() {
-      dispatch(RepositoriesActions.loadRequest(user?.login));
+      if (!user?.login) return;
+      dispatch(RepositoriesActions.loadRequest(user.login));
     }
 
     loadRepositories();
-  }, [dispatch, user, user.login]);
+  }, [dispatch, user]);
 
-  function fetchUser() {
-    if (!username.current?.value) {
+  function fetchUser(event: FormEvent) {
+    event.preventDefault();
+
+    if (!username) {
       setInputError('Type the username');
       return;
     }
 
-    dispatch(UserActions.loadRequest(String(username.current?.value)));
-    if (user.id) {
+    dispatch(UserActions.loadRequest(username));
+    if (error) {
+      setInputError('Error searching user.');
+    } else {
       setVisible(true);
       setInputError('');
-    } else {
-      setInputError('Error searching user.');
     }
   }
 
   return (
     <Container>
-      <div id="input-content">
+      <form onSubmit={fetchUser} id="input-content">
         <input
           type="text"
           placeholder="Username"
           data-testid="search-input"
-          ref={username}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
-        <button type="button" data-testid="search-button" onClick={fetchUser}>
+        <button type="submit" data-testid="search-button">
           <MdSearch size={20} color="#fff" />
         </button>
-      </div>
+      </form>
       { inputError && (
         <Error>
           <span>{inputError}</span>
