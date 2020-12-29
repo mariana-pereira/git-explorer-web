@@ -48,7 +48,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 # Running the tests
 
-Run `yarn open cypress` in order to start e2e testing.
+Run `yarn run cypress open` in order to start e2e testing.
 
 
 # Show your support
