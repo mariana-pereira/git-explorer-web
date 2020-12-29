@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import formatDistance from 'date-fns/formatDistance';
+import { MdKeyboardArrowRight } from 'react-icons/md';
 import api from '../../services/api';
 
-import IssueList from '../../components/IssueList';
-
-import { Container, RepositoryItem, RepositoryInfo } from './styles';
+import {
+  Container, RepositoryItem, RepositoryInfo, IssueList, IssueItem,
+} from './styles';
 
 interface RepositoryParams {
   repository: string;
@@ -93,7 +94,21 @@ const Repository: React.FC = () => {
             </RepositoryInfo>
           </RepositoryItem>
           <div id="space" />
-          <IssueList issues={issues} />
+          <IssueList data-testid="issue-list">
+            {issues.map((issue) => (
+              <IssueItem key={issue.id}>
+                <a href={issue.html_url} target="_blank" rel="noopener noreferrer">
+                  <div className="repo-info">
+                    <strong>{issue.title}</strong>
+                    <p>{issue.user.login}</p>
+                  </div>
+                  <div className="repo-icon">
+                    <MdKeyboardArrowRight size={20} />
+                  </div>
+                </a>
+              </IssueItem>
+            ))}
+          </IssueList>
         </>
       )}
     </Container>
