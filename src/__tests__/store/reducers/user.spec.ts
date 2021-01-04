@@ -14,7 +14,7 @@ const user = {
   public_repos: 1,
 };
 
-describe('Theme reducer', () => {
+describe(' reducer', () => {
   it('DEFAULT', () => {
     const state = reducer(undefined, {});
 
