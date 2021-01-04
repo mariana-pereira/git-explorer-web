@@ -20,18 +20,13 @@ const user = {
   public_repos: 1,
 };
 
-const action = {
-  type: '@users/LOAD_REQUEST',
-  payload: 'vuejs',
-};
-
 describe('Auth saga', () => {
   it('should be able to fetch user', async () => {
     const dispatch = jest.fn();
 
-    apiMock.onGet(`users/${action.payload}`).reply(200, user);
+    apiMock.onGet('users/vuejs').reply(200, user);
 
-    await runSaga({ dispatch }, load, action).toPromise();
+    await runSaga({ dispatch }, load, { type: '@user/LOAD_REQUEST', payload: 'vuejs' }).toPromise();
 
     expect(dispatch).toHaveBeenCalledWith(userActions.loadSuccess(user));
   });
@@ -39,9 +34,9 @@ describe('Auth saga', () => {
   it('should fail when api returns error', async () => {
     const dispatch = jest.fn();
 
-    apiMock.onGet(`users/${action.payload}`).reply(500);
+    apiMock.onGet('users/vuejs').reply(500);
 
-    await runSaga({ dispatch }, load, action).toPromise();
+    await runSaga({ dispatch }, load, { type: '@user/LOAD_REQUEST', payload: 'vuejs' }).toPromise();
 
     expect(dispatch).toHaveBeenCalledWith(userActions.loadFailure());
   });
