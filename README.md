@@ -49,6 +49,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 # Running the tests
 
 Run `yarn run cypress open` in order to start e2e testing.
+or
+Run `yarn test` in order to start unity testing.
 
 
 # Show your support
