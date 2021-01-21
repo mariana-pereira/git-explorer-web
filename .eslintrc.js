@@ -8,7 +8,7 @@ module.exports = {
     'react-app',
     'airbnb',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint'
+    'prettier/@typescript-eslint',
   ],
   globals: {
     Atomics: 'readonly',
@@ -30,12 +30,14 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
     'react/prop-types': 0,
     'import/extensions': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'camelcase': "off",
+    camelcase: 'off',
+    'no-use-before-define': 'off',
+    'no-shadow': 'off',
   },
   settings: {
     'import/parsers': {

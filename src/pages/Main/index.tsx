@@ -1,4 +1,6 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, {
+  useEffect, useRef, useState,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdSearch, MdKeyboardArrowRight } from 'react-icons/md';
@@ -19,8 +21,9 @@ const Main: React.FC = () => {
   );
   const dispatch = useDispatch();
 
+  const username = useRef<HTMLInputElement>(null);
+
   const [inputError, setInputError] = useState('');
-  const [username, setUsername] = useState('');
   const [visible, setVisible] = useState(() => {
     if (user.id) {
       return true;
@@ -38,15 +41,13 @@ const Main: React.FC = () => {
     loadRepositories();
   }, [dispatch, user]);
 
-  function fetchUser(event: FormEvent) {
-    event.preventDefault();
-
+  function fetchUser() {
     if (!username) {
       setInputError('Type the username');
       return;
     }
 
-    dispatch(UserActions.loadRequest(username));
+    dispatch(UserActions.loadRequest(String(username.current?.value)));
     if (error) {
       setInputError('Error searching user.');
     } else {
@@ -57,18 +58,17 @@ const Main: React.FC = () => {
 
   return (
     <Container>
-      <form onSubmit={fetchUser} id="input-content">
+      <div id="input-content">
         <input
           type="text"
           placeholder="Username"
           data-testid="search-input"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          ref={username}
         />
-        <button type="submit" data-testid="search-button">
+        <button type="button" data-testid="search-button" onClick={fetchUser}>
           <MdSearch size={20} color="#fff" />
         </button>
-      </form>
+      </div>
       { inputError && (
         <Error>
           <span>{inputError}</span>

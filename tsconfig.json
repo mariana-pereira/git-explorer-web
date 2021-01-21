@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "types": ["cypress"],
+    "types": [
+      "cypress"
+    ],
     "lib": [
       "dom",
       "dom.iterable",
@@ -18,7 +20,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"
