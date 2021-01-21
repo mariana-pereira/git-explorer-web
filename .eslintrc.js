@@ -30,7 +30,7 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
     'react/prop-types': 0,
     'import/extensions': 'off',
