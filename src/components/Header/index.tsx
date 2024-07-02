@@ -15,7 +15,12 @@ export function Header({ toggleTheme }: Props) {
 
 	return (
 		<Container>
-			<Compass size={30} color="#fff" />
+			
+			<div />
+			<div className="icon-container">
+				<Compass size={30} color="#fff" />
+				<span>GithubExplorer</span>
+			</div>
 			<ReactSwitch
 				onChange={toggleTheme}
 				checked={title === 'dark'}
