@@ -12,7 +12,7 @@ export default createGlobalStyle`
   }
   html, body, #root {
     height: 100%;
-    background: #ced4da;
+    background: ${(props) => props.theme.colors.background};
   }
   body {
     -webkit-font-smoothing: antialiased;
