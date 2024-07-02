@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { useAppSelector } from '../../store';
 import { load } from '../../store/slices/repository';
+import { Container } from './styles';
 
 export interface Repository {
   id: number;
@@ -23,11 +24,15 @@ export function RepositoryList() {
 	}, [dispatch]);
 
 	return (
-		<ul>
-			{repositories.map((repository) => (
-				<li key={repository.id}>{repository.name}</li>
-			))}
-		</ul>
+		<Container>
+			<ul>
+				{repositories.map((repository) => (
+					<li key={repository.id}>
+						<span>{repository.name}</span>
+					</li>
+				))}
+			</ul>
+		</Container>
 	);
 }
 
