@@ -1,10 +1,12 @@
 import RepositoryList from '../../components/RepositoryList';
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 export function Main() {
 	return (
 		<Container>
-			<RepositoryList />
+			<Content>
+				<RepositoryList />
+			</Content>
 		</Container>
 	);
 }
