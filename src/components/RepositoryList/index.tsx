@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { useAppSelector } from '../../store';
 import { load } from '../../store/slices/repository';
-import { Container, RepositoryItem, User, UserImage, UserInfo } from './styles';
+import { Container, Info, RepositoryItem, User, UserImage, UserInfo } from './styles';
 
 export interface Repository {
   id: number;
@@ -30,26 +30,30 @@ export function RepositoryList() {
 					<img src="https://avatars1.githubusercontent.com/u/26336279?v=4" alt="mariana" />
 				</UserImage>
 				<UserInfo>
-					<div>
-						<strong>Mariana Pereira</strong>
-						<span>mariana-pereira</span>
-					</div>
-					<div className="info">
-						<div>
-							<strong>Repositories</strong>
-							<span>54</span>
-						</div>
-						<div>
-							<strong>Followers</strong>
-							<span>52</span>
-						</div>
-						<div>
-							<strong>Following</strong>
-							<span>20</span>
-						</div>
-					</div>
+					<strong>Mariana Pereira</strong>
+					<span>mariana-pereira</span>
+					<p>FullStack Developer | Node.js | ReactJS | React Native</p>
+					<button type="button">
+						<a href="https://github.com/mariana-pereira" target="_blank" rel="noopener noreferrer">
+              See in Github
+						</a>
+					</button>
 				</UserInfo>
 			</User>
+			<Info>
+				<div>
+					<strong>followers</strong>
+					<span>52</span>
+				</div>
+				<div>
+					<strong>following</strong>
+					<span>20</span>
+				</div>
+				<div>
+					<strong>stars</strong>
+					<span>52</span>
+				</div>
+			</Info>
 			<ul>
 				{repositories.map((repository) => (
 					<RepositoryItem key={repository.id}>

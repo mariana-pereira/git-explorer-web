@@ -6,6 +6,31 @@ export const Container = styled.div`
   height: 100%;
   border-radius: 10px;
   padding: 20px;
+
+  .info {
+    width: 100%;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      strong {
+        font-size: 18px;
+        color: ${(props) => props.theme.colors.textTitle};
+      }
+      span {
+        font-size: 16px;
+        color: ${(props) => props.theme.colors.text};
+      }
+    }
+  }
+  ul {
+    margin-top: 15px;
+  }
   `;
 
 export const User = styled.div`
@@ -26,35 +51,60 @@ export const UserImage = styled.div`
 `;
 
 export const UserInfo = styled.div`
+display: flex;
+flex-direction: column;
 
-.info {
-    margin-top: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: center;
-  }
-  
-  span {
+strong {
     font-size: 18px;
-    color: ${(props) => props.theme.colors.text}
+    margin-bottom: 5px;
+    color: ${(props) => props.theme.colors.textTitle};
   }
+
+  span {
+    font-size: 16px;
+    margin-top: 6px;
+    margin-bottom: 5px;
+    color: ${(props) => props.theme.colors.text};
+  }
+
+  p {
+    margin-top: 6px;
+    color: ${(props) => props.theme.colors.text};
+    max-width: 100%;
+  }
+  button {
+    width: 300px;
+    height: 28px;
+    border: 0;
+    border-radius: 6px;
+    align-self: center;
+    margin: 20px;
+    background-color: ${(props) => props.theme.colors.primary};
+    transition: background-color 0.2s;
+    opacity: 1;
+    &:hover {
+      background: ${(props) => props.theme.colors.primaryDark};
+      
+    }
+    
+    a {
+      color: ${(props) => props.theme.colors.buttonText};
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+`;
+
+export const Info = styled.div`
+  display: flex;
+  margin-top: 70px;
+  padding: 0 100px;
+  justify-content: space-between;
 
   div {
-    margin-top: 5px;
     display: flex;
     flex-direction: column;
-  }
-
-  strong {
-    font-size: 16px;
-    color: ${(props) => props.theme.colors.text};
-  }
-  
-  span {
-    font-size: 14px;
-    color: ${(props) => props.theme.colors.text};
-    opacity: 0.5;
+    text-align: center;
   }
 `;
 
