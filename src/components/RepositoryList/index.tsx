@@ -1,3 +1,4 @@
+import { ChevronRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -55,11 +56,16 @@ export function RepositoryList() {
 				</div>
 			</Info>
 			<ul>
-				{repositories.map((repository) => (
-					<RepositoryItem key={repository.id}>
-						<span>{repository.name}</span>
-					</RepositoryItem>
-				))}
+				<RepositoryItem>
+					<div className="repo-info">
+						<strong>chat-me-node</strong>
+						<span>Typescript</span>
+						<p>Chat App API made with Node.js, Typescript, Express and MongoDB</p>
+					</div>
+					<div className="repo-icon">
+						<ChevronRight size={20} />
+					</div>
+				</RepositoryItem>
 			</ul>
 		</Container>
 	);
